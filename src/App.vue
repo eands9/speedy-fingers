@@ -1,16 +1,23 @@
 <template>
-  <h1>Kyle Reaction Timer KH13 EH6</h1>
+  <h1>Kyle's Dev</h1>
   <button @click="start">Play</button>
-  <Block v-if="isPlaying" :blockMsgP="blockMsg" :delayProps="delay"></Block>
+  <Block
+    v-if="isPlaying"
+    :blockMsgP="blockMsg"
+    :delayProps="delay"
+    @end="endGame"
+  ></Block>
+  <Results v-if="showResults" :scoreProps="score" />
   <h2 @click="msgFoul" class="blockRed" v-if="showRed">{{ blockMsg }}</h2>
 </template>
 
 <script>
 import Block from "./components/Block.vue";
+import Results from "./components/Results.vue";
 
 export default {
   name: "App",
-  components: { Block },
+  components: { Block, Results },
   data() {
     return {
       isPlaying: false,
@@ -18,6 +25,8 @@ export default {
       blockMsg: "",
       delay: null,
       showRed: false,
+      score: 0,
+      showResults: false,
     };
   },
   methods: {
@@ -44,6 +53,12 @@ export default {
           // this.isPlaying = false;
         }
       }, this.delay);
+    },
+    endGame(reactiontimeEM) {
+      this.score = reactiontimeEM;
+      this.isPlaying = false;
+      this.showResults = true;
+      console.log(this.score);
     },
   },
 };
