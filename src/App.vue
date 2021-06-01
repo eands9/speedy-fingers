@@ -37,6 +37,7 @@ export default {
       this.delay = 2000 + Math.random() * 5000;
       this.disableRedBlock();
       console.log(this.delay);
+      this.showResults = false;
     },
     msgFoul() {
       this.isPlaying = false;
@@ -59,6 +60,7 @@ export default {
       this.isPlaying = false;
       this.showResults = true;
       console.log(this.score);
+      this.blockMsg = "Play again?";
     },
   },
 };
@@ -84,7 +86,7 @@ export default {
 }
 h1 {
   background-color: red;
-  color: yellow;
+  color: white;
 }
 button {
   background-color: blue;
@@ -95,6 +97,17 @@ button {
   border-radius: 20px;
   font-size: 25px;
   letter-spacing: 1px;
+  cursor: pointer;
+  margin: 10px;
+}
+p {
+  background: purple;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 15px;
+  font-size: 25px;
+  letter-spacing: 3px;
   cursor: pointer;
   margin: 10px;
 }

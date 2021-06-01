@@ -1,6 +1,6 @@
 <template>
   <p>Reaction Time: {{ scoreProps }} ms</p>
-  <p class="feed">{{ feed }}</p>
+  <h2 class="feed">{{ feed }}</h2>
 </template>
 
 <script>
