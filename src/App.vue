@@ -1,17 +1,16 @@
 <template>
   <h1>Kyle Reaction Timer KH13 EH6</h1>
-  <button @click="start">play</button>
-  <Block @click="msgFoul" v-if="isPlaying" :blockMsgP="blockMsg"></Block>
-  <Block2 v-if="isTimerRunning" :scoreProps="score"/>
+  <button @click="start">Play</button>
+  <Block @click="msgFoul" v-if="isPlaying" :blockMsgP="blockMsg" :delayProps="delay"></Block>
+  <h2 class="blockRed" v-if="isPlaying">{{ blockMsg }}</h2>
 </template>
 
 <script>
 import Block from './components/Block.vue'
-import Block2 from './components/Block2.vue'
 
 export default {
   name: 'App',
-  components: { Block, Block2 },
+  components: { Block },
   data() {
     return {
       isPlaying: false,
@@ -24,6 +23,7 @@ export default {
     start() {
      this.isPlaying = true;
      this.delay = 2000 + Math.random() * 5000;
+     console.log(this.delay)
     },
     msgFoul(){
       this.blockMsg='Foul! Pls don\'t click until I turn green... Click Play to restart'
@@ -40,5 +40,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.blockRed {
+    color: white;
+    background: red;
+    margin: 40px auto;
+    text-align: center;
+    padding: 100px 0;
+    border-radius: 20px;
+    width: 400px;
 }
 </style>

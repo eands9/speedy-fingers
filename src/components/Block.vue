@@ -1,19 +1,24 @@
 <template>
-  <h2 class="block" v-if="showBlock">
-      {{ blockMsgP }}
+  <h2 class="block" v-if="showBlock" >
+      Click Me!
   </h2>
 </template>
 
 <script>
 export default {
-    props: ['blockMsgP'],
+    props: ['delayProps'],
     data() {
         return {
             showBlock: false,
+            timer: null,
         }
     },
     mounted() {
-        this.showBlock = true;
+        setTimeout(() => {
+             this.showBlock = true;
+        },this.delayProps)
+        this.$emit('hideRedBlock')
+        console.log(this.delayProps)
     }
 }
 </script>
@@ -21,7 +26,7 @@ export default {
 <style>
     .block {
         color: white;
-        background: red;
+        background: green;
         margin: 40px auto;
         text-align: center;
         padding: 100px 0;
