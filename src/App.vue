@@ -29,12 +29,15 @@ export default {
       console.log(this.delay);
     },
     msgFoul() {
+      this.isPlaying = false;
+      this.delay = null;
       this.blockMsg =
         "Foul! Pls don't click until I turn green... Click Play to restart";
     },
     disableRedBlock() {
       setTimeout(() => {
         this.showRed = false;
+        this.isPlaying = false;
       }, this.delay);
     },
   },
