@@ -1,5 +1,5 @@
 <template>
-  <h1>Kyle's Dev</h1>
+  <h1>Speedy Fingers</h1>
   <button @click="start">Play</button>
   <Block
     v-if="isPlaying"
