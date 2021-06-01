@@ -1,35 +1,44 @@
 <template>
   <h1>Kyle Reaction Timer KH13 EH6</h1>
   <button @click="start">Play</button>
-  <Block @click="msgFoul" v-if="isPlaying" :blockMsgP="blockMsg" :delayProps="delay"></Block>
-  <h2 class="blockRed" v-if="isPlaying">{{ blockMsg }}</h2>
+  <Block v-if="isPlaying" :blockMsgP="blockMsg" :delayProps="delay"></Block>
+  <h2 @click="msgFoul" class="blockRed" v-if="showRed">{{ blockMsg }}</h2>
 </template>
 
 <script>
-import Block from './components/Block.vue'
+import Block from "./components/Block.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: { Block },
   data() {
     return {
       isPlaying: false,
       isTimerRunning: false,
-      blockMsg: 'Don\'t click yet... Wait for it!',
-      delay: null
-    }
+      blockMsg: "Don't click yet... Wait for it!",
+      delay: null,
+      showRed: false,
+    };
   },
   methods: {
     start() {
-     this.isPlaying = true;
-     this.delay = 2000 + Math.random() * 5000;
-     console.log(this.delay)
+      this.isPlaying = true;
+      this.showRed = true;
+      this.delay = 2000 + Math.random() * 5000;
+      this.disableRedBlock();
+      console.log(this.delay);
     },
-    msgFoul(){
-      this.blockMsg='Foul! Pls don\'t click until I turn green... Click Play to restart'
-    }
-  }
-}
+    msgFoul() {
+      this.blockMsg =
+        "Foul! Pls don't click until I turn green... Click Play to restart";
+    },
+    disableRedBlock() {
+      setTimeout(() => {
+        this.showRed = false;
+      }, this.delay);
+    },
+  },
+};
 </script>
 
 <style>
@@ -42,12 +51,12 @@ export default {
   margin-top: 60px;
 }
 .blockRed {
-    color: white;
-    background: red;
-    margin: 40px auto;
-    text-align: center;
-    padding: 100px 0;
-    border-radius: 20px;
-    width: 400px;
+  color: white;
+  background: red;
+  margin: 40px auto;
+  text-align: center;
+  padding: 100px 0;
+  border-radius: 20px;
+  width: 400px;
 }
 </style>
