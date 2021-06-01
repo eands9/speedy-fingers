@@ -82,4 +82,20 @@ export default {
   border-radius: 20px;
   width: 400px;
 }
+h1 {
+  background-color: red;
+  color: yellow;
+}
+button {
+  background-color: blue;
+  color: white;
+  font-size: 25px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 25px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin: 10px;
+}
 </style>
