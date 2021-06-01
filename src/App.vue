@@ -15,7 +15,7 @@ export default {
     return {
       isPlaying: false,
       isTimerRunning: false,
-      blockMsg: "Don't click yet... Wait for it!",
+      blockMsg: "",
       delay: null,
       showRed: false,
     };
@@ -23,6 +23,7 @@ export default {
   methods: {
     start() {
       this.isPlaying = true;
+      this.blockMsg = "Don't click yet... Wait for it!";
       this.showRed = true;
       this.delay = 2000 + Math.random() * 5000;
       this.disableRedBlock();
@@ -30,14 +31,18 @@ export default {
     },
     msgFoul() {
       this.isPlaying = false;
-      this.delay = null;
       this.blockMsg =
         "Foul! Pls don't click until I turn green... Click Play to restart";
     },
     disableRedBlock() {
       setTimeout(() => {
-        this.showRed = false;
-        this.isPlaying = false;
+        if (this.isPlaying === false) {
+          console.log("firstif");
+        } else {
+          console.log("elseif");
+          this.showRed = false;
+          // this.isPlaying = false;
+        }
       }, this.delay);
     },
   },
