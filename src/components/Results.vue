@@ -12,12 +12,12 @@ export default {
     };
   },
   mounted() {
-    if (this.scoreProps < 450) {
-      this.feed = "Speedy Fingers!";
-    } else if (this.scoreProps < 880) {
-      this.feed = "All Right!";
+    if (this.scoreProps < 200) {
+      this.feed = "Speedy Fingers! Now, try for a new record!";
+    } else if (this.scoreProps < 450) {
+      this.feed = "Good... but can you do better?";
     } else {
-      this.feed = "Too slow..";
+      this.feed = "Too slow...";
     }
   },
 };
