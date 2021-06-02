@@ -15,7 +15,7 @@ export default {
     if (this.scoreProps < 200) {
       this.feed = "Speedy Fingers! Now, try for a new record!";
     } else if (this.scoreProps < 450) {
-      this.feed = "Good... but can you do better?";
+      this.feed = "Good... can you do better?";
     } else {
       this.feed = "Too slow...";
     }
@@ -26,7 +26,7 @@ export default {
 <style>
 .feed {
   font-size: 2.3rem;
-  color: #0faf87;
-  font-weight: 50;
+  color: black;
+  font-weight: 10050;
 }
 </style>

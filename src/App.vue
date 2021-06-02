@@ -1,13 +1,14 @@
 <template>
   <h1>Speedy Fingers</h1>
-  <button @click="start">Play</button>
+  <h5>by Kyle</h5>
   <Block
     v-if="isPlaying"
     :blockMsgP="blockMsg"
     :delayProps="delay"
     @end="endGame"
   ></Block>
-  <Results v-if="showResults" :scoreProps="score" />
+  <Results class="results" v-if="showResults" :scoreProps="score" />
+  <button v-if="showButton" @click="start">{{buttonLbl}}</button>
   <h2 @click="msgFoul" class="blockRed" v-if="showRed">{{ blockMsg }}</h2>
 </template>
 
@@ -27,6 +28,8 @@ export default {
       showRed: false,
       score: 0,
       showResults: false,
+      buttonLbl: 'Play',
+      showButton: true
     };
   },
   methods: {
@@ -38,11 +41,15 @@ export default {
       this.disableRedBlock();
       console.log(this.delay);
       this.showResults = false;
+      this.buttonLbl='Play'
+      this.showButton=false
     },
     msgFoul() {
       this.isPlaying = false;
       this.blockMsg =
-        "Foul! Pls don't click until I turn green... Click Play to restart";
+        "Foul! Pls don't click until it's green... Click Play to restart";
+      this.showButton=true
+      this.buttonLbl='Play'
     },
     disableRedBlock() {
       setTimeout(() => {
@@ -60,7 +67,8 @@ export default {
       this.isPlaying = false;
       this.showResults = true;
       console.log(this.score);
-      this.blockMsg = "Play again?";
+      this.buttonLbl = "Play again?";
+      this.showButton=true
     },
   },
 };
@@ -85,15 +93,14 @@ export default {
   width: 400px;
 }
 h1 {
-  background-color: red;
-  color: white;
+  color: black;
 }
 button {
   background-color: blue;
   color: white;
   font-size: 25px;
   border: none;
-  padding: 8px 16px;
+  padding: 16px 32px;
   border-radius: 20px;
   font-size: 25px;
   letter-spacing: 1px;
@@ -106,9 +113,13 @@ p {
   border: none;
   padding: 8px 16px;
   border-radius: 15px;
-  font-size: 25px;
+  font-size: 20px;
   letter-spacing: 3px;
   cursor: pointer;
   margin: 10px;
+}
+
+results {
+  font-weight: bold;
 }
 </style>
